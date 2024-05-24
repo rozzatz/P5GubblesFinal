@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
-
+    private Animator animator;
     public float speed;
     public float turnSpeed;
     public float jumpForce = 10;
@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody>();
         Physics.gravity *= gravityModifier;
+        animator = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -28,6 +30,7 @@ public class PlayerController : MonoBehaviour
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
+            animator.SetTrigger("jump");
         }
     }
 
@@ -45,6 +48,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
+           
         }
     }
 }
