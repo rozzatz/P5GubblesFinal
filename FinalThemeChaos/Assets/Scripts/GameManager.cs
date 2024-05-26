@@ -18,4 +18,11 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    public void StartGame()
+    {
+        isGameActive = true;
+
+        titleScreen.gameObject.SetActive(false);
+    }
 }
