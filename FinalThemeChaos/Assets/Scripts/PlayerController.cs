@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 10;
     public float gravityModifier;
     public bool isOnGround = true;
+    public ParticleSystem explosionParticle;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +50,11 @@ public class PlayerController : MonoBehaviour
         {
             isOnGround = true;
            
+        }
+        if (collision.gameObject.CompareTag("Bad"))
+        {
+            Destroy(gameObject);
+            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
         }
     }
 }

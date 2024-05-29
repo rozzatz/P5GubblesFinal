@@ -8,24 +8,31 @@ public class FallingObjects : MonoBehaviour
     public ParticleSystem explosionParticle;
 
     private Rigidbody Rb;
+    float xRange= 8;
+    float zRange = 8;
+    float ySpawnPos = 15;
+    private GameManager GameManager;
 
     // Start is called before the first frame update
     void Start()
     {
         Rb = GetComponent<Rigidbody>();
+        transform.position = RandomSpawnPos();
+        GameManager = GameObject.Find("GameManager")
+            .GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y > 9)
+     if (transform.position.y < -12)
         {
             Destroy(gameObject);
         }
-        else if (transform.position.y < -12)
-        {
-            Destroy(gameObject);
-        }
+    }
+    Vector3 RandomSpawnPos()
+    {
+        return new Vector3(Random.Range(-xRange, xRange), ySpawnPos, Random.Range(-zRange, zRange));
     }
 
     void OnCollisionEnter(Collision collision)
