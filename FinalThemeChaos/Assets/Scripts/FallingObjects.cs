@@ -8,8 +8,8 @@ public class FallingObjects : MonoBehaviour
     public ParticleSystem explosionParticle;
 
     private Rigidbody Rb;
-    float xRange= 8;
-    float zRange = 8;
+    float xRange= 6;
+    float zRange = 6;
     float ySpawnPos = 15;
     private GameManager GameManager;
 

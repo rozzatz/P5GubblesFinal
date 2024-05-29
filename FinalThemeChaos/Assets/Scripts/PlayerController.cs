@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float gravityModifier;
     public bool isOnGround = true;
     public ParticleSystem explosionParticle;
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,7 @@ public class PlayerController : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         Physics.gravity *= gravityModifier;
         animator = GetComponent<Animator>();
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -55,6 +56,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(gameObject);
             Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+            gameManager.EndGame();
         }
     }
 }

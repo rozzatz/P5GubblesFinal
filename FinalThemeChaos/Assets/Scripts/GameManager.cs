@@ -1,12 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
     public bool isGameActive;
     public GameObject titleScreen;
+    public GameObject GameOver;
+    public GameObject Player;
     public List<GameObject> fallingObjects;
    float SpawnRate = 0.4f;
    
@@ -37,10 +41,21 @@ public class GameManager : MonoBehaviour
     {
         isGameActive = true;
 
-        Debug.Log("Game Start!");
-
         titleScreen.gameObject.SetActive(false);
+        GameOver.gameObject.SetActive(false);
 
         StartCoroutine(SpawnFallingObjects());
+
+        Instantiate(Player);    
+
+    }
+
+    public void EndGame()
+    {
+        isGameActive = false;
+
+        GameOver.gameObject.SetActive(true);
+
+        Debug.Log("Game over!");
     }
 }
