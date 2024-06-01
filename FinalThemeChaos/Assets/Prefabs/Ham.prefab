@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3968176161810274971}
   - component: {fileID: 7509971510261606923}
   - component: {fileID: 1858866904417458164}
-  - component: {fileID: 2739708872453085603}
+  - component: {fileID: 4057934784810379421}
   m_Layer: 0
   m_Name: Ham
   m_TagString: Bad
@@ -128,8 +128,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &2739708872453085603
-MeshCollider:
+--- !u!65 &4057934784810379421
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -146,7 +146,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5506878775851055244, guid: 2b1055afae88d1c4680feb8265a33a35, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 4.0748453, y: 1.3742902, z: 1.3631948}
+  m_Center: {x: 0, y: -0.06675641, z: -0.02040578}
