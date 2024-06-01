@@ -7,6 +7,7 @@ public class DestroyAfterDelay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Destroys particle effect after 2 seconds
         Destroy(gameObject, 2);
     }
 

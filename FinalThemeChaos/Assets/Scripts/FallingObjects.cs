@@ -16,6 +16,7 @@ public class FallingObjects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // summons game manager and rigid body
         Rb = GetComponent<Rigidbody>();
         transform.position = RandomSpawnPos();
         GameManager = GameObject.Find("GameManager")
@@ -25,6 +26,7 @@ public class FallingObjects : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // destroys gameobject if falls below -12
      if (transform.position.y < -12)
         {
             Destroy(gameObject);
@@ -32,11 +34,13 @@ public class FallingObjects : MonoBehaviour
     }
     Vector3 RandomSpawnPos()
     {
+        // choses random spawn position from the established ranges
         return new Vector3(Random.Range(-xRange, xRange), ySpawnPos, Random.Range(-zRange, zRange));
     }
 
     void OnCollisionEnter(Collision collision)
     {
+        // destroys object upon contact with other object
         Destroy(gameObject);
         Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
 
