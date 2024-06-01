@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private float walkSpeed;
+
+    private Vector3 moveDirection;
+
     private Rigidbody playerRb;
     private Animator animator;
     public float speed;
@@ -19,7 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody>();
         Physics.gravity *= gravityModifier;
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
@@ -27,13 +32,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Movement();
-
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
-        {
-            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isOnGround = false;
-            animator.SetTrigger("jump");
-        }
     }
 
     void Movement()
@@ -43,6 +41,42 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(Vector3.forward * forwardMovement);
         transform.Rotate(Vector3.up * turnMovement);
+
+        if (isOnGround)
+        {
+            if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.UpArrow))
+            {
+                Walk();
+            }
+            else if (moveDirection == Vector3.zero)
+            {
+                Idle();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
+            {
+                Jump();
+            }
+        }
+
+    }
+
+    private void Idle()
+    {
+        animator.SetFloat("Speed", 0);
+    }
+
+    private void Walk()
+    {
+        speed = walkSpeed;
+        animator.SetFloat("Speed", 0.5f);
+    }
+    private void Jump()
+    {
+        playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        isOnGround = false;
+        animator.SetTrigger("jump");
+        animator.SetFloat("Speed", 1);
     }
 
     private void OnCollisionEnter(Collision collision)
