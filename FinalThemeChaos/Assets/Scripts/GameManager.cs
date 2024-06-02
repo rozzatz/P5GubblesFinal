@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject GameOver;
     public GameObject Player;
     public List<GameObject> fallingObjects;
-    float SpawnRate = 0.5f;
+    float SpawnRate = 0.6f;
     public float Score;
 
 
@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
     {
         // summons timer text
         timerText.text = Score.ToString();
+
+    //stops the spawnrate from going too small
+    if (SpawnRate < 0.4f ) { SpawnRate = 0.4f; }
     }
     IEnumerator SpawnFallingObjects()
     {
