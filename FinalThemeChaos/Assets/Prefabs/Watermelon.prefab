@@ -34,11 +34,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: dd5c23045caca5c448bbba7f8c9de23a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: dd5c23045caca5c448bbba7f8c9de23a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000021855694
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: dd5c23045caca5c448bbba7f8c9de23a, type: 3}
       propertyPath: m_LocalRotation.y
@@ -46,11 +46,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: dd5c23045caca5c448bbba7f8c9de23a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: dd5c23045caca5c448bbba7f8c9de23a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: dd5c23045caca5c448bbba7f8c9de23a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -63,6 +63,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: dd5c23045caca5c448bbba7f8c9de23a, type: 3}
       propertyPath: m_Name
       value: Watermelon
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: dd5c23045caca5c448bbba7f8c9de23a, type: 3}
+      propertyPath: m_TagString
+      value: Bad
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

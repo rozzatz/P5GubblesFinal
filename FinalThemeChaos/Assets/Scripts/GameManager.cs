@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject GameOver;
     public GameObject Player;
     public List<GameObject> fallingObjects;
-    float SpawnRate = 0.6f;
+    float SpawnRate = 0.7f;
     public float Score;
 
 
@@ -32,8 +32,7 @@ public class GameManager : MonoBehaviour
         // summons timer text
         timerText.text = Score.ToString();
 
-    //stops the spawnrate from going too small
-    if (SpawnRate < 0.4f ) { SpawnRate = 0.4f; }
+  
     }
     IEnumerator SpawnFallingObjects()
     {
@@ -55,7 +54,7 @@ public class GameManager : MonoBehaviour
     {
         // starts the game, deactivates title screen, starts spawning objects and starts score, and summons player
         isGameActive = true;
-
+      
         titleScreen.gameObject.SetActive(false);
         GameOver.gameObject.SetActive(false);
 
@@ -70,14 +69,30 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void ReStartGame()
+    {
+        // starts the game, deactivates title screen, starts spawning objects and starts score, and summons player
+        isGameActive = true;
+
+        StartCoroutine(SpawnFallingObjects());
+        titleScreen.gameObject.SetActive(false);
+        GameOver.gameObject.SetActive(false);
+       
+        Score = 0;
+        Instantiate(Player);
+
+    } 
+
+
     public void EndGame()
     {
         // ends the game and summons game over screen
+     
         isGameActive = false;
-
+    
         GameOver.gameObject.SetActive(true);
 
-        Debug.Log("Game over!");
+     
 
     }
 }
